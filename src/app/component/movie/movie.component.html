@@ -1,0 +1,33 @@
+
+
+<div class="AllProduct">
+
+  <a class="btn btn-primary  ml-3" [routerLink]="['/NewMovie']" role="button">Add Movie</a>
+
+  <h3>List of our Movies:</h3>
+  <table class="table table-hover table-bordered table-info">
+    <tr class="bg-dark text-white">
+      <td>ID</td>
+      <td>Name</td>
+      <td>Details</td>
+      <td>Delete</td>
+      <td>Update</td>
+    </tr>
+    <tbody>
+      <tr *ngFor="let item of movList ; let i =index">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <!-- <td><a [routerLink]="['/Product/', prod.ID]" class="btn btn-primary">View details</a></td> -->
+        <td>
+          <button class="btn btn-primary" type="button" [routerLink]="['/movie/']"
+            (click)="deleteProd(item.id)">Delete</button>
+        </td>
+        <td>
+          <button class="btn btn-primary" type="button" [routerLink]="['/EditMovie/', item.id]">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,41 @@
+
+
+<div class="select_menu mt-5 w-50">
+  <label class="" for="">Categories:</label>
+  <select class="form-select mt-3" aria-label="Default select example" (change)="filterCategory($event)">
+    <option value="all" selected>All Menu</option>
+    <option value="{{option.id}}" *ngFor="let option of categories">{{option.name}}</option>
+  </select>
+</div>
+
+<div class="box mt-5 mb-5" *ngIf="!loading">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of movies">
+      <div class="card" style="width: 18rem;">
+        <img *ngIf="item.image ;else staticImg" [src]="item.image" class="card-img-top" alt="movie_img">
+        <ng-template #staticImg>
+        <img src="../../../assets/mov_1.jpg">
+        </ng-template>
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center w-100 mt-5" *ngIf="loading">
+  <app-spinner></app-spinner>
+ </div>
+
+
+<!-- 
+"name": "jdkjw",
+            "image": "public/Image/1666222031im-6.png",
+            "description": "kddkdk",
+            "category_id": 86,
+            "created_at": "2022-10-19T23:27:11.000000Z",
+            "updated_at": "2022-10-19T23:27:11.000000Z"
+-->
